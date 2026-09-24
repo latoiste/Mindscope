@@ -15,7 +15,7 @@ public abstract class Board : MonoBehaviour
     
     private ToggleButton toggleButton;
     protected SpriteRenderer sprite;
-    private bool moved;
+    protected bool moved;
     private bool isMoving;
     protected Vector2 originalCanvasPos { get; set; }
     public UnityEvent<Board, bool> onMoved; // opening: bool

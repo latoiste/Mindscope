@@ -47,6 +47,9 @@ TagManager:
   - name: board
     uniqueID: 2825581179
     locked: 0
+  - name: CluePaper
+    uniqueID: 758701981
+    locked: 0
   - name: InformationBoard
     uniqueID: 1749887221
     locked: 0
