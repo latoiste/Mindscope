@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ToggleButton : MonoBehaviour
+public class Button : MonoBehaviour
 {
     public UnityEvent onClick;
 

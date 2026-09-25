@@ -13,19 +13,20 @@ public abstract class Board : MonoBehaviour
     [SerializeField] private Vector2 movedCanvasPos;
     [SerializeField] private float boardSpeed = 0.5f;
     
-    private ToggleButton toggleButton;
+    private Button toggleButton;
     protected SpriteRenderer sprite;
     protected bool moved;
     private bool isMoving;
     protected Vector2 originalCanvasPos { get; set; }
     public UnityEvent<Board, bool> onMoved; // opening: bool
+    protected Task movingOp;
 
     protected abstract void OnBoardMoved(Board board, bool opening);
 
     void Start()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
-        toggleButton = GetComponentInChildren<ToggleButton>();
+        toggleButton = GetComponentInChildren<Button>();
 
         toggleButton.onClick.AddListener(() => _ = ToggleBoard());
         onMoved.AddListener(OnBoardMoved);
@@ -41,12 +42,15 @@ public abstract class Board : MonoBehaviour
         Vector2 pos = moved ? originalCanvasPos : movedCanvasPos;
         isMoving = true;
 
-        onMoved?.Invoke(this, !moved); // !moved == board opening
-
-        await transform
+        movingOp = transform
             .DOMove(pos, boardSpeed)
             .SetEase(Ease.OutCubic)
             .AsyncWaitForCompletion();
+
+        onMoved?.Invoke(this, !moved); // !moved == board opening
+        await movingOp;
+
+        movingOp = null;
     
         moved = !moved;
         isMoving = false;

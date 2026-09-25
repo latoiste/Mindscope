@@ -12,7 +12,7 @@ public class QuestionManager : MonoBehaviour
     }
 
     [Header("Question Buttons")]
-    public Button[] questionButtons;
+    public UnityEngine.UI.Button[] questionButtons;
 
     [Header("Dialogue")]
     public GameObject dialoguePanel;

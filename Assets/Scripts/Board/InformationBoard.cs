@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class InformationBoard : Board
 {
-    protected override void OnBoardMoved(Board board, bool opening)
+    protected override async void OnBoardMoved(Board board, bool opening)
     {
-        sprite.sortingOrder = opening ? 0 : 100;
+        if (opening)
+        {
+            sprite.sortingOrder = 0;
+        } else
+        {
+            await movingOp;
+            sprite.sortingOrder = 5;
+        }
     }
 }

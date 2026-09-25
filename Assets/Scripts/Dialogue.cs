@@ -42,7 +42,7 @@ public class Dialogue : MonoBehaviour
 
     // next dialogue button
     public GameObject dialogButton;
-    public Button nextButton;
+    public UnityEngine.UI.Button nextButton;
     private bool dialogClick = false;
 
     public Animator animation;
@@ -160,7 +160,7 @@ public class Dialogue : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 scribbles[i].SetActive(true);
-                questionButtons[i].GetComponent<Button>().interactable = false;
+                questionButtons[i].GetComponent<UnityEngine.UI.Button>().interactable = false;
             }
         }
     }
@@ -183,7 +183,7 @@ public class Dialogue : MonoBehaviour
         {
             closeAllPanels();
             scribbles[clickedButton.buttonInd].SetActive(true);
-            dialogButton.GetComponent<Button>().interactable = true;
+            dialogButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
             isClicked = true;
             isStart = true;
             textComp.text = string.Empty;
@@ -255,7 +255,7 @@ public class Dialogue : MonoBehaviour
 
     public void NextLine()
     {
-        if (isStart && dialogButton.GetComponent<Button>().interactable)
+        if (isStart && dialogButton.GetComponent<UnityEngine.UI.Button>().interactable)
         {
             if (index < clickedButton.endInd)
             {
@@ -266,8 +266,8 @@ public class Dialogue : MonoBehaviour
             {
                 Debug.Log("koc");
                 index = 0;
-                dialogButton.GetComponent<Button>().interactable = false;
-                clickedButton.GetComponent<Button>().interactable = false;
+                dialogButton.GetComponent<UnityEngine.UI.Button>().interactable = false;
+                clickedButton.GetComponent<UnityEngine.UI.Button>().interactable = false;
                 isClicked = false;
                 animation.SetInteger("isTalking", 0);
             }
