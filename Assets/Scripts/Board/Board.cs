@@ -68,7 +68,6 @@ public abstract class Board : MonoBehaviour
 
     void OnDestroy()
     {
-        toggleButton.onClick.RemoveAllListeners();
         onMoved.RemoveAllListeners();
     }
 }

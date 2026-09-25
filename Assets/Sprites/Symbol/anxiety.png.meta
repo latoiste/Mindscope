@@ -1,0 +1,484 @@
+fileFormatVersion: 2
+guid: b936383f1869c9083b9c906bd8d2b8c8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5831523805222920389
+    second: anxiety_0
+  - first:
+      213: 8495938904925594279
+    second: anxiety_1
+  - first:
+      213: 6686202103660210750
+    second: anxiety_2
+  - first:
+      213: 4191349800011262501
+    second: anxiety_3
+  - first:
+      213: -8928406075352282454
+    second: anxiety_4
+  - first:
+      213: 7906867968470113041
+    second: anxiety_5
+  - first:
+      213: 1921598408909854158
+    second: anxiety_6
+  - first:
+      213: -6504841228079415761
+    second: anxiety_7
+  - first:
+      213: 9169292210045996569
+    second: anxiety_8
+  - first:
+      213: -5111052871149189330
+    second: anxiety_9
+  - first:
+      213: 8260557564059705586
+    second: anxiety_10
+  - first:
+      213: 2513896743379253647
+    second: anxiety_11
+  - first:
+      213: 2204513742044635813
+    second: anxiety_12
+  - first:
+      213: 6256581688847952238
+    second: anxiety_13
+  - first:
+      213: -5902061929897852866
+    second: anxiety_14
+  - first:
+      213: 5523776579983745614
+    second: anxiety_15
+  - first:
+      213: 2577171954034320349
+    second: anxiety_16
+  - first:
+      213: 5893810867344774230
+    second: anxiety_17
+  - first:
+      213: -7471944378275620157
+    second: anxiety_18
+  - first:
+      213: 7105653828684589462
+    second: anxiety_19
+  - first:
+      213: 217508665154995672
+    second: anxiety_20
+  - first:
+      213: -230726673312814546
+    second: anxiety_21
+  - first:
+      213: 5169539105119900260
+    second: anxiety_22
+  - first:
+      213: 1011207120439844481
+    second: anxiety_23
+  - first:
+      213: 3003577075225848050
+    second: anxiety_24
+  - first:
+      213: 7102020190972483335
+    second: anxiety_25
+  - first:
+      213: 5619010534518665460
+    second: anxiety_26
+  - first:
+      213: -6029888363002625678
+    second: anxiety_27
+  - first:
+      213: -2720670605665745073
+    second: anxiety_28
+  - first:
+      213: -1257238541911955833
+    second: anxiety_29
+  - first:
+      213: -2112792086534327447
+    second: anxiety_30
+  - first:
+      213: -5556313063572883047
+    second: anxiety_31
+  - first:
+      213: -2534687219385748075
+    second: anxiety_32
+  - first:
+      213: 6769128044197256533
+    second: anxiety_33
+  - first:
+      213: -4101109144506618867
+    second: anxiety_34
+  - first:
+      213: 8418749771881661468
+    second: anxiety_35
+  - first:
+      213: -3874561308726187629
+    second: anxiety_36
+  - first:
+      213: -8836377404290328676
+    second: anxiety_37
+  - first:
+      213: 607896477345858551
+    second: anxiety_38
+  - first:
+      213: -1446607427707679855
+    second: anxiety_39
+  - first:
+      213: 6326490342865625192
+    second: anxiety_40
+  - first:
+      213: -3907531071310064042
+    second: anxiety_41
+  - first:
+      213: 3598597373912976892
+    second: anxiety_42
+  - first:
+      213: 3425284130287184520
+    second: anxiety_43
+  - first:
+      213: -8994456902248638433
+    second: anxiety_44
+  - first:
+      213: -1026389203117983830
+    second: anxiety_45
+  - first:
+      213: -288790907493203521
+    second: anxiety_46
+  - first:
+      213: 2465217224255490709
+    second: anxiety_47
+  - first:
+      213: 8717972747044277870
+    second: anxiety_48
+  - first:
+      213: 1371038532103347419
+    second: anxiety_49
+  - first:
+      213: -8726290703104426615
+    second: anxiety_50
+  - first:
+      213: -207578133983719774
+    second: anxiety_51
+  - first:
+      213: 4446032000863933662
+    second: anxiety_52
+  - first:
+      213: -5752029006897290188
+    second: anxiety_53
+  - first:
+      213: -7899595720324023024
+    second: anxiety_54
+  - first:
+      213: -822002520252177058
+    second: anxiety_55
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anxiety_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c0eb8d010cbde050800000000000000
+      internalID: 5831523805222920389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a2e28dab63a7e570800000000000000
+      internalID: 8495938904925594279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ae22563692acc50800000000000000
+      internalID: 6686202103660210750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a6317bf6aaa2a30800000000000000
+      internalID: 4191349800011262501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa003caafde71480800000000000000
+      internalID: -8928406075352282454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11b53926686dabd60800000000000000
+      internalID: 7906867968470113041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec517046293eaaa10800000000000000
+      internalID: 1921598408909854158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anxiety_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2eb2000e592ab5a0800000000000000
+      internalID: -6504841228079415761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 18cf57b1d3afb0b9791b186d013d4900
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":500.0,"y":500.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      anxiety_0: 5831523805222920389
+      anxiety_1: 8495938904925594279
+      anxiety_2: 6686202103660210750
+      anxiety_3: 4191349800011262501
+      anxiety_4: -8928406075352282454
+      anxiety_5: 7906867968470113041
+      anxiety_6: 1921598408909854158
+      anxiety_7: -6504841228079415761
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

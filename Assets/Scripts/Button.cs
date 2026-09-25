@@ -10,4 +10,9 @@ public class Button : MonoBehaviour
     {
         onClick?.Invoke();
     }
+
+    void OnDestroy()
+    {
+        onClick.RemoveAllListeners();
+    }
 }
