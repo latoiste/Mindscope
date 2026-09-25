@@ -1,14 +1,14 @@
 using System;
 
 [Serializable]
-public class PageData
+public class InformationPageData
 {
     public string name;
     public string description;
 }
 
 [Serializable]
-public class PageDataWrapper // butuh ini karna JsonUtility ga bisa read raw json array
+public class InformationPageDataWrapper // butuh ini karna JsonUtility ga bisa read raw json array
 {
-    public PageData[] pages;
+    public InformationPageData[] pages;
 }

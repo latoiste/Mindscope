@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class InformationBoard : Board
 {
     private int pageIndex;
-    private PageData[] pages;
+    private InformationPageData[] pages;
 
     [SerializeField] private TextMeshPro conditionName;
     [SerializeField] private TextMeshPro conditionDescription;
@@ -17,8 +18,10 @@ public class InformationBoard : Board
     private SpriteRenderer prevArrowSprite;
     private SpriteRenderer nextArrowSprite;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         pageIndex = 0;
         
         prevArrow.onClick.AddListener(() => NextPage(-1));
@@ -31,7 +34,8 @@ public class InformationBoard : Board
 
         string json = File.ReadAllText(filepath);
 
-        PageDataWrapper pageDatas = JsonUtility.FromJson<PageDataWrapper>(json);
+        InformationPageDataWrapper pageDatas = JsonUtility.FromJson<InformationPageDataWrapper>(json);
+        Debug.Log(pageDatas.pages.Length);
 
         if (pageDatas.pages.Length == 0) Debug.LogError("InformationBoard page data empty");
         pages = pageDatas.pages;
@@ -78,7 +82,7 @@ public class InformationBoard : Board
 
     private void SetPageContent(int pageIndex)
     {
-        PageData page = pages[pageIndex];
+        InformationPageData page = pages[pageIndex];
         
         conditionName.text = page.name;
         conditionDescription.text = page.description;

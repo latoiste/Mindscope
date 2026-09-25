@@ -1,0 +1,16 @@
+{
+    "pages": [ 
+        {
+            "name": "hai", 
+            "spriteId": "anxiety"
+        },
+        {
+            "name": "kedua", 
+            "spriteId": "ptsd"
+        },
+        {
+            "name": "ketiga", 
+            "spriteId": "mdd"
+        }
+    ]
+}

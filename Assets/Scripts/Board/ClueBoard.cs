@@ -14,8 +14,10 @@ public class ClueBoard : Board
     private Vector2 newClueNotifPos; 
     private int cluePaperCount;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         cluePaperCount = 0;
         newClueNotifPos = newClueNotif.transform.position;
         newClueNotif.enabled = false;

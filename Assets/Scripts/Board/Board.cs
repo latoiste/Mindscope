@@ -13,7 +13,7 @@ public abstract class Board : MonoBehaviour
     [SerializeField] private Vector2 movedCanvasPos;
     [SerializeField] private float boardSpeed = 0.5f;
     
-    private Button toggleButton;
+    protected Button toggleButton;
     protected SpriteRenderer sprite;
     protected bool moved;
     private bool isMoving;
@@ -23,7 +23,7 @@ public abstract class Board : MonoBehaviour
 
     protected abstract void OnBoardMoved(Board board, bool opening);
 
-    void Start()
+    protected virtual void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
         toggleButton = GetComponentInChildren<Button>();
