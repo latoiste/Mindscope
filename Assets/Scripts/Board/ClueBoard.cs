@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class ClueBoard : Board
     [SerializeField] private CluePaper cluePaperPrefab;
     [SerializeField] private SpriteRenderer newClueNotif;
 
-
+    private List<CluePaper> cluePapers;
     private Vector2 newClueNotifPos; 
     private int cluePaperCount;
 
@@ -18,6 +19,7 @@ public class ClueBoard : Board
     {
         base.Awake();
         
+        cluePapers = new();
         cluePaperCount = 0;
         newClueNotifPos = newClueNotif.transform.position;
         newClueNotif.enabled = false;
@@ -37,6 +39,18 @@ public class ClueBoard : Board
         cluePaperCount++;
 
         if (!moved) _ = ShowNotification();
+        cluePapers.Add(cluePaper);
+    }
+
+    public void BringClueToFront(CluePaper cluePaper)
+    {
+        cluePapers.Remove(cluePaper);
+        cluePapers.Add(cluePaper);
+
+        for (int i = 0; i < cluePapers.Count; i++)
+        {
+            cluePapers[i].SetSortingOrder(i);
+        }
     }
 
     private async Task ShowNotification()

@@ -11,6 +11,7 @@ public class CluePaper : MonoBehaviour
     private RectTransform clipboardBoundary;
     private Vector2 mouseOffset;
     private SpriteRenderer sprite;
+    private ClueBoard clueBoard;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class CluePaper : MonoBehaviour
         bounds = boxCollider.bounds;
         sprite = GetComponentInChildren<SpriteRenderer>();
         textMeshPro = GetComponentInChildren<TextMeshPro>();
+        clueBoard = GetComponentInParent<ClueBoard>();
     }
 
     public void Init(string text, RectTransform clipboardBoundary, int sortingOrder)
@@ -26,6 +28,11 @@ public class CluePaper : MonoBehaviour
         textMeshPro.text = text;
         this.clipboardBoundary = clipboardBoundary;
 
+        SetSortingOrder(sortingOrder);
+    }
+
+    public void SetSortingOrder(int sortingOrder)
+    {
         sprite.sortingOrder = sortingOrder * 10;
         textMeshPro.sortingOrder = sortingOrder * 10 + 1;
     }
@@ -33,6 +40,7 @@ public class CluePaper : MonoBehaviour
     void OnMouseDown()
     {
         mouseOffset = new Vector2(transform.position.x, transform.position.y) - MousePosition();
+        clueBoard.BringClueToFront(this);
     }
 
     void OnMouseDrag()
