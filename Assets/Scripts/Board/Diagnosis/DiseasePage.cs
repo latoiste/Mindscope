@@ -1,70 +1,56 @@
-using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class DiagnosisBoard : Board
+public class DiseasePage : MonoBehaviour
 {
+    [SerializeField] private Button diagnoseButton;
     [SerializeField] private TextMeshPro diseaseName;
     [SerializeField] private Animator diseaseSpriteAnim;
-    [SerializeField] private List<SpriteEntry> diseaseSprites;
     [SerializeField] private Button prevArrow;
     [SerializeField] private Button nextArrow;
-    [SerializeField] private GameObject initialPage;
-    [SerializeField] private GameObject diseasePage;
-    private SpriteRenderer prevArrowSprite;    
-    private SpriteRenderer nextArrowSprite;    
-    private DiagnosisPageData[] pages;
+    private DiagnosisBoard diagnosisBoard;
+    private SpriteRenderer nextArrowSprite;
     private int pageIndex;
+    private DiagnosisPageData[] pages;
+    public UnityEvent<string> onDiagnosed;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-        
         pageIndex = 0;
-        
+        diagnosisBoard = GetComponentInParent<DiagnosisBoard>();
+
+        diagnoseButton.onClick.AddListener(Diagnose);
         prevArrow.onClick.AddListener(() => NextDiseasePage(-1));
-        prevArrowSprite = prevArrow.gameObject.GetComponentInChildren<SpriteRenderer>();
-        
         nextArrow.onClick.AddListener(() => NextDiseasePage(1));
         nextArrowSprite = nextArrow.gameObject.GetComponentInChildren<SpriteRenderer>();
         
         string filepath = @"Assets/Storage/diagnosisPage.json";
-
         string json = File.ReadAllText(filepath);
 
         DiagnosisPageDataWrapper pageDatas = JsonUtility.FromJson<DiagnosisPageDataWrapper>(json);
 
-        if (pageDatas.pages.Length == 0) Debug.LogError("DiagnosisBoard page data empty");
+        if (pageDatas.pages.Length == 0) Debug.LogWarning("DiagnosisBoard page data empty");
         pages = pageDatas.pages;
-
-        SetPageContent(0);
-        UpdateArrowSprite();
-        toggleButton.Disable();
     }
 
-    public async void EnableBoard()
+    private void Diagnose()
     {
-        await transform
-            .DOLocalMoveX(1.8f, 1f)
-            .SetEase(Ease.OutCubic)
-            .AsyncWaitForCompletion();
+        if (!gameObject.activeSelf) return;
+        
+        DiagnosisPageData page = pages[pageIndex];
 
-        originalCanvasPos = transform.position;
-        diseasePage.SetActive(false);
-        toggleButton.Enable();
+        onDiagnosed.Invoke(page.value);
     }
-
+    
     private void NextDiseasePage(int step)
     {
         int newPageIndex = pageIndex + step;
 
         if (newPageIndex < 0)
         {
-            
+            diagnosisBoard.SwitchPage("initial");
             return;
         }
 
@@ -78,13 +64,9 @@ public class DiagnosisBoard : Board
 
     private void UpdateArrowSprite()
     {
-        Color prevArrowColor = prevArrowSprite.color;
         Color nextArrowColor = nextArrowSprite.color;
 
-        prevArrowColor.a = pageIndex == 0 ? 0.5f : 1f;
         nextArrowColor.a = pageIndex == pages.Length - 1 ? 0.5f : 1f;
-
-        prevArrowSprite.color = prevArrowColor;
         nextArrowSprite.color = nextArrowColor;
     }
 
@@ -94,10 +76,5 @@ public class DiagnosisBoard : Board
 
         diseaseSpriteAnim.Play(page.spriteId);
         diseaseName.text = page.name;
-    }
-    
-    protected override void OnBoardMoved(Board board, bool opening)
-    {
-        return;
     }
 }

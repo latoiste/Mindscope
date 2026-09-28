@@ -2,13 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Button : MonoBehaviour
 {
     public UnityEvent onClick;
 
     private BoxCollider2D boxCollider;
 
-    void Awake()
+    protected virtual void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }

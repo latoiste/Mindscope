@@ -2,15 +2,18 @@
     "pages": [ 
         {
             "name": "hai", 
-            "spriteId": "anxiety"
+            "spriteId": "anxiety",
+            "value": "anxiety"
         },
         {
             "name": "kedua", 
-            "spriteId": "ptsd"
+            "spriteId": "ptsd",
+            "value": "ptsd"
         },
         {
             "name": "ketiga", 
-            "spriteId": "mdd"
+            "spriteId": "mdd",
+            "value": "mdd"
         }
     ]
 }

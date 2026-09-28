@@ -5,6 +5,7 @@ public class DiagnosisPageData
 {
     public string spriteId;
     public string name;
+    public string value;
 }
 
 [Serializable]

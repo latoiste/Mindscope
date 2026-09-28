@@ -5,5 +5,5 @@ using UnityEngine;
 public class SpriteEntry
 {
     public string id;
-    public Sprite sprite;
+    // public Sprite sprite;
 }
