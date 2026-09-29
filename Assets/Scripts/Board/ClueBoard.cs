@@ -13,16 +13,22 @@ public class ClueBoard : Board
 
     private List<CluePaper> cluePapers;
     private Vector2 newClueNotifPos; 
-    private int cluePaperCount;
 
     protected override void Awake()
     {
         base.Awake();
         
         cluePapers = new();
-        cluePaperCount = 0;
         newClueNotifPos = newClueNotif.transform.position;
         newClueNotif.enabled = false;
+
+        var clueProfile = GetComponentInChildren<CluePaper>();
+        clueProfile.Init(
+            "Name: Hal\nAge: 21\nOccupation: Retail worker\nReason for visiting: Feeling tired constantly",
+            clipboardBoundary,
+            0
+        );
+        cluePapers.Add(clueProfile);
     }
 
     protected override async void OnBoardMoved(Board _, bool opening)
@@ -35,8 +41,7 @@ public class ClueBoard : Board
     public void ShowClue(string text)
     {
         CluePaper cluePaper = Instantiate(cluePaperPrefab, clipboardBoundary.transform.position, transform.rotation, transform);
-        cluePaper.Init(text, clipboardBoundary, cluePaperCount);
-        cluePaperCount++;
+        cluePaper.Init(text, clipboardBoundary, cluePapers.Count);
 
         if (!moved) _ = ShowNotification();
         cluePapers.Add(cluePaper);

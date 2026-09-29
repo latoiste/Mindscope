@@ -1,16 +1,8 @@
 {
     "pages": [ 
         {
-            "name": "hai", 
-            "description": "helloo"
-        },
-        {
-            "name": "kedua", 
-            "description": "aaaaaaa"
-        },
-        {
-            "name": "ketiga", 
-            "description": "test test st ets t es tsets tets et"
+            "name": "The Hollow", 
+            "description": "The Hollow is a phenomenon that can affect a person's mood, energy, thoughts, and everyday activities. A person experiencing this phenomenon may feel persistently sad, empty, or hopeless, even when there is no obvious reason for these feelings. They may also lose interest in activities they usually enjoy, such as hobbies, social interactions, or other things that once brought them happiness. \n\nThey may constantly feel tired, drained, or lacking in energy, even after getting around 7-9 hours of sleep. Concentrating on tasks, making decisions, or remembering things may also become more difficult. Changes in sleep patterns can occur as well, such as sleeping more than usual, having difficulty falling asleep, or frequently waking during the night. Some individuals may experience feelings of worthlessness, guilt, inadequacy, or low self-esteem, which can affect how they view themselves and their abilities. \n\nIn more severe cases, a person may experience thoughts about death or suicide. These experiences can vary from person to person, and having some of these symptoms does not automatically mean that someone has a specific mental health condition. The Hollow is intended to describe a pattern of emotional and behavioral experiences rather than provide a diagnosis."
         }
     ]
 }

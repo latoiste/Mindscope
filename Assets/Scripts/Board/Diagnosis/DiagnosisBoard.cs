@@ -7,6 +7,8 @@ public class DiagnosisBoard : Board
 {
     [SerializeField] private GameObject initialPageGo;
     [SerializeField] private GameObject diseasePageGo;
+    [SerializeField] private GameManager gameManager;
+
     private InitialPage initialPage;
     private DiseasePage diseasePage;
     private GameObject currentPage;
@@ -60,7 +62,8 @@ public class DiagnosisBoard : Board
 
     private void EndGame(string outcome)
     {
-        Debug.Log(outcome);
+        if (outcome.Length == 0) return;
+        gameManager.Diagnose(outcome);
     }
     
     protected override void OnBoardMoved(Board board, bool opening)

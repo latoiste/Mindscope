@@ -1,17 +1,17 @@
 {
     "pages": [ 
         {
-            "name": "hai", 
+            "name": "The Signal", 
             "spriteId": "anxiety",
             "value": "anxiety"
         },
         {
-            "name": "kedua", 
+            "name": "The Remnant", 
             "spriteId": "ptsd",
             "value": "ptsd"
         },
         {
-            "name": "ketiga", 
+            "name": "The Hollow", 
             "spriteId": "mdd",
             "value": "mdd"
         }

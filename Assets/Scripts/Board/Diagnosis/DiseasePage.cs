@@ -33,6 +33,8 @@ public class DiseasePage : MonoBehaviour
 
         if (pageDatas.pages.Length == 0) Debug.LogWarning("DiagnosisBoard page data empty");
         pages = pageDatas.pages;
+
+        SetPageContent(0);
     }
 
     private void Diagnose()
