@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
+    path: Assets/Scenes/end win.unity
     guid: fa5f30d946bcbf94c9dbefadea9cb778
   - enabled: 1
-    path: Assets/Scenes/LoseScreen.unity
+    path: Assets/Scenes/end lose.unity
     guid: 67ce083c701682f4095c7a1a5e051e9b
   - enabled: 1
     path: Assets/Scenes/Room.unity

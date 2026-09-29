@@ -26,7 +26,10 @@ public class Button : MonoBehaviour
 
     void OnMouseDown()
     {
+       if (boxCollider != null && boxCollider.enabled)
+    {
         onClick?.Invoke();
+    }
     }
 
     void OnDestroy()
