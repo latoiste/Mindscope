@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: 7.17}
+  m_AnchoredPosition: {x: 0.01, y: 7.38}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &505662823802694420
@@ -367,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: -2.59}
+  m_AnchoredPosition: {x: 0.01, y: -2.33}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5339490082280159891
@@ -439,8 +439,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Condition Description palcehol wow placeholder wow text text wowow text
-    text text text text text aaaaaa txt wwrwewew text adasdasda text text twxt
+  m_text: "\"The Hollow is a phenomenon that can affect a person\u2019s mood, energy,
+    thoughts, and daily life. Someone experiencing it may feel persistently sad,
+    empty, or hopeless, sometimes without an obvious reason. They may lose interest
+    in hobbies, socializing, or activities they once enjoyed.\n\nThey may also feel
+    constantly tired or drained, even after getting enough sleep. Concentrating,
+    making decisions, or remembering things can become difficult, while sleep patterns
+    may change. Feelings of worthlessness, guilt, inadequacy, or low self-esteem
+    may also appear.\n\nIn severe cases, thoughts of death or suicide can occur.
+    However, these experiences vary between individuals, and having some of these
+    signs does not necessarily indicate a specific mental health condition. The Hollow
+    describes a pattern of experiences rather than a diagnosis.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2ff07a06070664b45be08ccda2403c28, type: 2}
   m_sharedMaterial: {fileID: -2643035420081140466, guid: 2ff07a06070664b45be08ccda2403c28, type: 2}
@@ -467,8 +476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
