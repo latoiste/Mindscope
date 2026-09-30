@@ -898,7 +898,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000f17814267bf26aa8fb88a68af5284d689ddf382d839a1045
+  m_ApplyToSortingLayers: 00000000f17814267bf26aa8fb88a68af5284d689ddf382d839a1045cd29adf5750c8dce558d1537
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1971,6 +1971,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1056489252}
     m_Modifications:
+    - target: {fileID: 851894783180783956, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1074625728078553007, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
       propertyPath: gameManager
       value: 
@@ -2015,9 +2019,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284208127547733774, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5291450123808156854, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
       propertyPath: m_Name
       value: DiagnosisBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243031932634220534, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026562345698279101, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764337622634263216, guid: c5825ef10704c09d28f125aedaa56625, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2236,6 +2256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2350458801778047421, guid: 3443305550a2deddd9ec1a0d3cfe4139, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4069049721551068524, guid: 3443305550a2deddd9ec1a0d3cfe4139, type: 3}
       propertyPath: m_Name
       value: ClueBoard
@@ -2315,9 +2339,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1056489252}
     m_Modifications:
+    - target: {fileID: 505662823802694420, guid: 901b5fdd0f21e953d9695abbae2e98c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3537753490818493985, guid: 901b5fdd0f21e953d9695abbae2e98c7, type: 3}
       propertyPath: m_Name
       value: InformationBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339490082280159891, guid: 901b5fdd0f21e953d9695abbae2e98c7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7532586494144329590, guid: 901b5fdd0f21e953d9695abbae2e98c7, type: 3}
       propertyPath: m_LocalPosition.x

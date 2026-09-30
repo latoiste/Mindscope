@@ -25,7 +25,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    private void OnBoardMoved(Board board, bool opening)
+    private async void OnBoardMoved(Board board, bool opening)
     {
         if (board == activeBoard && !opening)
         {
@@ -33,8 +33,27 @@ public class BoardManager : MonoBehaviour
             return;
         }
 
-        if (activeBoard != null) _ = activeBoard.CloseBoard();
+        if (!opening) return;
+
+        DisableBoards();
+
+        var oldActiveBoard = activeBoard;
         activeBoard = board;
+
+        if (oldActiveBoard != null) await oldActiveBoard.CloseBoard();
+        if (board.movingOp != null) await board.movingOp;
+        
+        EnableBoards();
+    }
+
+    private void DisableBoards()
+    {
+        foreach (var b in boards) b.Disable();
+    }
+
+    private void EnableBoards()
+    {
+        foreach (var b in boards) b.Enable();
     }
 
     void OnDestroy()

@@ -33,9 +33,28 @@ public class ClueBoard : Board
 
     protected override async void OnBoardMoved(Board _, bool opening)
     {
-        sprite.sortingOrder = opening ? 0 : 100;
+        if (opening)
+        {
+            SetSortingLayerName("openingBoard");
+            await movingOp;
+            SetSortingLayerName("openedClueBoard");
+            sprite.sortingOrder = 0;
+        } else
+        {
+            SetSortingLayerName("closingBoard");
+            await movingOp;
+            SetSortingLayerName("board");
+            sprite.sortingOrder = 100;
+        }
 
         if (opening && newClueNotif.enabled) newClueNotif.enabled = false; 
+    }
+
+    private void SetSortingLayerName(string layerName)
+    {
+        int layerId = SortingLayer.NameToID(layerName);
+
+        sprite.sortingLayerID = layerId;
     }
 
     public void ShowClue(string text)

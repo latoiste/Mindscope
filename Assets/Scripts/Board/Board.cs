@@ -19,7 +19,7 @@ public abstract class Board : MonoBehaviour
     private bool isMoving;
     protected Vector2 originalCanvasPos { get; set; }
     public UnityEvent<Board, bool> onMoved; // opening: bool
-    protected Task movingOp;
+    public Task movingOp;
 
     protected abstract void OnBoardMoved(Board board, bool opening);
 
@@ -64,6 +64,16 @@ public abstract class Board : MonoBehaviour
     public async Task CloseBoard()
     {
         if (moved) await ToggleBoard();
+    }
+
+    public void Disable()
+    {
+        toggleButton.Disable();
+    }
+
+    public void Enable()
+    {
+        toggleButton.Enable();
     }
 
     void OnDestroy()

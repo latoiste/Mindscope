@@ -6,11 +6,23 @@ public class PauseBoard : Board
     {
         if (opening)
         {
+            SetSortingLayerName("openingBoard");
+            await movingOp;
+            SetSortingLayerName("board");
             sprite.sortingOrder = 0;
         } else
         {
+            SetSortingLayerName("closingBoard");
             await movingOp;
-            sprite.sortingOrder = 10;
+            SetSortingLayerName("board");
+            sprite.sortingOrder = 5;
         }
+    }
+
+    private void SetSortingLayerName(string layerName)
+    {
+        int layerId = SortingLayer.NameToID(layerName);
+
+        sprite.sortingLayerID = layerId;
     }
 }

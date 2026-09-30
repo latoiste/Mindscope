@@ -44,11 +44,20 @@ TagManager:
   - name: background
     uniqueID: 638875889
     locked: 0
-  - name: board
-    uniqueID: 2825581179
+  - name: closingBoard
+    uniqueID: 4121766349
+    locked: 0
+  - name: openingBoard
+    uniqueID: 3465350261
+    locked: 0
+  - name: openedClueBoard
+    uniqueID: 924159317
     locked: 0
   - name: CluePaper
     uniqueID: 758701981
+    locked: 0
+  - name: board
+    uniqueID: 2825581179
     locked: 0
   - name: InformationBoard
     uniqueID: 1749887221
