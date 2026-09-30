@@ -48,12 +48,28 @@ public class InformationBoard : Board
     {
         if (opening)
         {
+            SetSortingLayerName("openingBoard");
+            await movingOp;
+            SetSortingLayerName("board");
             sprite.sortingOrder = 0;
         } else
         {
+            SetSortingLayerName("closingBoard");
             await movingOp;
+            SetSortingLayerName("board");
             sprite.sortingOrder = 5;
         }
+    }
+
+    private void SetSortingLayerName(string layerName)
+    {
+        int layerId = SortingLayer.NameToID(layerName);
+
+        sprite.sortingLayerID = layerId;
+        conditionDescription.sortingLayerID = layerId;
+        conditionName.sortingLayerID = layerId;
+        prevArrowSprite.sortingLayerID = layerId;
+        nextArrowSprite.sortingLayerID = layerId;
     }
 
     private void NextPage(int step)

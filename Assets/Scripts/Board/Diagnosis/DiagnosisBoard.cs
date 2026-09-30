@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -65,9 +66,32 @@ public class DiagnosisBoard : Board
         if (outcome.Length == 0) return;
         gameManager.Diagnose(outcome);
     }
-    
-    protected override void OnBoardMoved(Board board, bool opening)
+
+    private void SetSortingLayerName(string layerName)
     {
-        return;
+        int layerId = SortingLayer.NameToID(layerName);
+
+        var sprites = GetComponentsInChildren<SpriteRenderer>();
+        var textMeshPros = GetComponentsInChildren<TextMeshPro>();
+
+        foreach (var s in sprites) s.sortingLayerID = layerId;
+        foreach (var t in textMeshPros) t.sortingLayerID = layerId;
+    }
+    
+    protected override async void OnBoardMoved(Board board, bool opening)
+    {
+        if (opening)
+        {
+            SetSortingLayerName("openingBoard");
+            await movingOp;
+            SetSortingLayerName("board");
+            sprite.sortingOrder = 0;
+        } else
+        {
+            SetSortingLayerName("closingBoard");
+            await movingOp;
+            SetSortingLayerName("board");
+            sprite.sortingOrder = 5;
+        }
     }
 }
