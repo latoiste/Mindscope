@@ -78,6 +78,8 @@ public abstract class Board : MonoBehaviour
 
     void OnDestroy()
     {
+        transform.DOKill();
         onMoved.RemoveAllListeners();
     }
+
 }

@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,67 +7,79 @@ public class InitialPage : MonoBehaviour
     [SerializeField] private Checkbox noMentalCondition;
     [SerializeField] private Checkbox insufficientEvidence;
     [SerializeField] private Checkbox hasMentalCondition;
-    private Dictionary<string, Checkbox> checkboxMap;
+
     private Checkbox activeCheckbox;
     private DiagnosisBoard diagnosisBoard;
-    private bool canCheck;
     public UnityEvent<string> onDiagnosed;
 
     void Awake()
     {
-        canCheck = true;
-        checkboxMap = new()
-        {
-            { "noCondition", noMentalCondition },
-            { "insufficientEvidence", insufficientEvidence },
-            { "hasCondition", hasMentalCondition },
-        };
         diagnosisBoard = GetComponentInParent<DiagnosisBoard>();
 
-        noMentalCondition.onClick.AddListener(() => OnChecked(noMentalCondition));
-        insufficientEvidence.onClick.AddListener(() => OnChecked(insufficientEvidence));
-        hasMentalCondition.onClick.AddListener(() => OnChecked(hasMentalCondition));
+        noMentalCondition.onClick.AddListener(() => OnCheckboxClicked(noMentalCondition, insufficientEvidence));
+        insufficientEvidence.onClick.AddListener(() => OnCheckboxClicked(insufficientEvidence, noMentalCondition));
 
-        hasMentalCondition.onClick.AddListener(() => diagnosisBoard.SwitchPage("disease"));
+        // Clicking "has mental condition" immediately sends the player to disease selection
+        hasMentalCondition.onClick.AddListener(OnHasConditionClicked);
 
         diagnoseButton.onClick.AddListener(Diagnose);
     }
 
-    private void OnChecked(Checkbox checkbox)
+    private void OnCheckboxClicked(Checkbox clicked, Checkbox other)
     {
-        if (activeCheckbox != null)
+        // If the box was just checked
+        if (clicked.IsChecked)
         {
-            activeCheckbox.SetChecked(false);
+            // Uncheck the other option so only 1 can be checked
+            other.SetChecked(false);
+            activeCheckbox = clicked;
+
+            // Show diagnose button
+            SetDiagnoseButtonVisible(true);
         }
-        activeCheckbox = checkbox;
-    } 
+        else // The box was unchecked
+        {
+            activeCheckbox = null;
+
+            // Hide diagnose button
+            SetDiagnoseButtonVisible(false);
+        }
+    }
+
+    private void OnHasConditionClicked()
+    {
+        // Uncheck it so it does not stay checked if player returns later
+        hasMentalCondition.SetChecked(false);
+
+        // Force player to the disease diagnosis pages
+        diagnosisBoard.SwitchPage("disease");
+    }
 
     private void Diagnose()
     {
-        if (activeCheckbox == null || !gameObject.activeSelf) return;
+        if (activeCheckbox == null || !activeCheckbox.IsChecked || !gameObject.activeSelf) return;
 
-        onDiagnosed.Invoke(activeCheckbox.value);
+        onDiagnosed?.Invoke(activeCheckbox.value);
     }
 
     void OnEnable()
     {
-        hasMentalCondition.SetChecked(false);
+        // Reset everything whenever this page is shown
+        activeCheckbox = null;
+
+        if (noMentalCondition != null) noMentalCondition.SetChecked(false);
+        if (insufficientEvidence != null) insufficientEvidence.SetChecked(false);
+        if (hasMentalCondition != null) hasMentalCondition.SetChecked(false);
+
+        // Hide diagnose button until player selects an option
+        SetDiagnoseButtonVisible(false);
     }
 
-    // private async Task OnChecked(Checkbox checkbox)
-    // {
-        // if (!canCheck) return;
-
-        // canCheck = false;
-
-        // var oldActiveCheckbox = activeCheckbox;
-        // activeCheckbox = checkbox;
-
-        // if (oldActiveCheckbox != null) {
-        //     await oldActiveCheckbox.ToggleCheck();
-        // }
-        // // await checkbox.animatingOp;
-
-        // canCheck = true;
-    // }
+    private void SetDiagnoseButtonVisible(bool visible)
+    {
+        if (diagnoseButton != null)
+        {
+            diagnoseButton.gameObject.SetActive(visible);
+        }
+    }
 }
