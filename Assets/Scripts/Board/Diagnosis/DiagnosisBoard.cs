@@ -71,8 +71,8 @@ public class DiagnosisBoard : Board
     {
         int layerId = SortingLayer.NameToID(layerName);
 
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        var textMeshPros = GetComponentsInChildren<TextMeshPro>();
+        var sprites = GetComponentsInChildren<SpriteRenderer>(true);
+        var textMeshPros = GetComponentsInChildren<TextMeshPro>(true);
 
         foreach (var s in sprites) s.sortingLayerID = layerId;
         foreach (var t in textMeshPros) t.sortingLayerID = layerId;

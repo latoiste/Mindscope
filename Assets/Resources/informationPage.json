@@ -1,0 +1,16 @@
+{
+    "pages": [
+        {
+            "name": "The Hollow",
+            "description": "The Hollow is a phenomenon that can affect a person’s mood, energy, thoughts, and daily life. Someone experiencing it may feel persistently sad, empty, or hopeless, sometimes without an obvious reason. They may lose interest in hobbies, socializing, or activities they once enjoyed.\n\nThey may also feel constantly tired or drained, even after getting enough sleep. Concentrating, making decisions, or remembering things can become difficult, while sleep patterns may change. Feelings of worthlessness, guilt, inadequacy, or low self-esteem may also appear.\n\nIn severe cases, thoughts of death or suicide can occur. However, these experiences vary between individuals, and having some of these signs does not necessarily indicate a specific mental health condition. The Hollow describes a pattern of experiences rather than a diagnosis."
+        },
+        {
+            "name": "The Signal",
+            "description": "The Signal is a persistent warning that refuses to go quiet. It may appear across ordinary days, attaching itself to different events, possibilities, and thoughts. Even without immediate danger, the mind remains on edge, constantly searching for what could go wrong.\n\nAs The Signal continues, restlessness, fatigue, difficulty concentrating, irritability, and muscle tension may become part of everyday life. Sleep can become difficult or disrupted, while the mind and body remain prepared for something that has not happened yet.\n\nEventually, The Signal can interfere with relationships, studying, working, or resting. The worry becomes difficult to control and causes significant distress in daily life. The Signal describes a recurring pattern of experiences rather than a diagnosis."
+        },
+        {
+            "name": "The Remnant",
+            "description": "The Remnant is something left behind by an event that has ended but continues to live within the mind and body. It may return through intrusive memories, distressing dreams, or moments where the past feels real again. Certain places, sounds, or sensations can awaken it, causing intense emotional or physical reactions.\n\nThe person may avoid thoughts, memories, people, or situations that remind them of what happened. Over time, negative thoughts, difficult emotions, detachment, loss of interest, or difficulty experiencing joy may appear, changing how they see themselves and the world.\n\nThe Remnant can also keep the body prepared for danger. Irritability, sudden anger, constant alertness, strong startle reactions, poor concentration, and sleep difficulties may occur, making it feel as though the danger could return at any moment."
+        }
+    ]
+}

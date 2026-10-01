@@ -1,0 +1,19 @@
+{
+    "pages": [
+        {
+            "name": "The Hollow",
+            "spriteId": "mdd",
+            "value": "mdd"
+        },
+        {
+            "name": "The Signal",
+            "spriteId": "anxiety",
+            "value": "anxiety"
+        },
+        {
+            "name": "The Remnant",
+            "spriteId": "ptsd",
+            "value": "ptsd"
+        }
+    ]
+}
