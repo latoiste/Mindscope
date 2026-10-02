@@ -13,7 +13,7 @@ public abstract class Board : MonoBehaviour
     [SerializeField] private Vector2 movedCanvasPos;
     [SerializeField] private float boardSpeed = 0.5f;
     
-    protected Button toggleButton;
+    [SerializeField] protected Button toggleButton;
     protected SpriteRenderer sprite;
     protected bool moved;
     private bool isMoving;
@@ -26,11 +26,19 @@ public abstract class Board : MonoBehaviour
     protected virtual void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
-        toggleButton = GetComponentInChildren<Button>();
 
-        toggleButton.onClick.AddListener(() => _ = ToggleBoard());
+        if (toggleButton == null)
+        {
+            toggleButton = GetComponentInChildren<Button>();
+        }
+
+        if (toggleButton != null)
+        {
+            toggleButton.onClick.AddListener(() => _ = ToggleBoard());
+        }
+
         onMoved.AddListener(OnBoardMoved);
-        
+
         moved = false;
         originalCanvasPos = transform.position;
     }

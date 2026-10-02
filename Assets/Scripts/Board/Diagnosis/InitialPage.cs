@@ -9,50 +9,62 @@ public class InitialPage : MonoBehaviour
     [SerializeField] private Checkbox hasMentalCondition;
 
     private Checkbox activeCheckbox;
-    private DiagnosisBoard diagnosisBoard;
-    public UnityEvent<string> onDiagnosed;
+    [SerializeField] private DiagnosisBoard diagnosisBoard;
+    public UnityEvent<string> onDiagnosed = new();
 
     void Awake()
     {
-        diagnosisBoard = GetComponentInParent<DiagnosisBoard>();
+        if (diagnosisBoard == null)
+            diagnosisBoard = GetComponentInParent<DiagnosisBoard>();
+        if (diagnosisBoard == null)
+            diagnosisBoard = FindFirstObjectByType<DiagnosisBoard>();
 
-        noMentalCondition.onClick.AddListener(() => OnCheckboxClicked(noMentalCondition, insufficientEvidence));
-        insufficientEvidence.onClick.AddListener(() => OnCheckboxClicked(insufficientEvidence, noMentalCondition));
+        if (noMentalCondition != null)
+            noMentalCondition.onClick.AddListener(() => OnCheckboxClicked(noMentalCondition, insufficientEvidence));
 
-        // Clicking "has mental condition" immediately sends the player to disease selection
-        hasMentalCondition.onClick.AddListener(OnHasConditionClicked);
+        if (insufficientEvidence != null)
+            insufficientEvidence.onClick.AddListener(() => OnCheckboxClicked(insufficientEvidence, noMentalCondition));
 
-        diagnoseButton.onClick.AddListener(Diagnose);
+        if (hasMentalCondition != null)
+            hasMentalCondition.onClick.AddListener(OnHasConditionClicked);
+
+        if (diagnoseButton != null)
+            diagnoseButton.onClick.AddListener(Diagnose);
     }
 
     private void OnCheckboxClicked(Checkbox clicked, Checkbox other)
     {
-        // If the box was just checked
         if (clicked.IsChecked)
         {
-            // Uncheck the other option so only 1 can be checked
-            other.SetChecked(false);
+            if (other != null) other.SetChecked(false);
             activeCheckbox = clicked;
-
-            // Show diagnose button
             SetDiagnoseButtonVisible(true);
         }
-        else // The box was unchecked
+        else
         {
             activeCheckbox = null;
-
-            // Hide diagnose button
             SetDiagnoseButtonVisible(false);
         }
     }
 
     private void OnHasConditionClicked()
     {
-        // Uncheck it so it does not stay checked if player returns later
-        hasMentalCondition.SetChecked(false);
+        // Uncheck all boxes on this page
+        if (hasMentalCondition != null) hasMentalCondition.SetChecked(false);
+        if (noMentalCondition != null) noMentalCondition.SetChecked(false);
+        if (insufficientEvidence != null) insufficientEvidence.SetChecked(false);
+        activeCheckbox = null;
+        SetDiagnoseButtonVisible(false);
 
-        // Force player to the disease diagnosis pages
-        diagnosisBoard.SwitchPage("disease");
+        // Transition to disease page
+        if (diagnosisBoard != null)
+        {
+            diagnosisBoard.SwitchPage("disease");
+        }
+        else
+        {
+            Debug.LogError("[InitialPage] DiagnosisBoard reference could not be found!");
+        }
     }
 
     private void Diagnose()
@@ -64,14 +76,25 @@ public class InitialPage : MonoBehaviour
 
     void OnEnable()
     {
-        // Reset everything whenever this page is shown
         activeCheckbox = null;
 
-        if (noMentalCondition != null) noMentalCondition.SetChecked(false);
-        if (insufficientEvidence != null) insufficientEvidence.SetChecked(false);
-        if (hasMentalCondition != null) hasMentalCondition.SetChecked(false);
+        // Ensure all colliders are active and clickable
+        if (noMentalCondition != null)
+        {
+            noMentalCondition.Enable();
+            noMentalCondition.SetChecked(false);
+        }
+        if (insufficientEvidence != null)
+        {
+            insufficientEvidence.Enable();
+            insufficientEvidence.SetChecked(false);
+        }
+        if (hasMentalCondition != null)
+        {
+            hasMentalCondition.Enable();
+            hasMentalCondition.SetChecked(false);
+        }
 
-        // Hide diagnose button until player selects an option
         SetDiagnoseButtonVisible(false);
     }
 
@@ -80,6 +103,7 @@ public class InitialPage : MonoBehaviour
         if (diagnoseButton != null)
         {
             diagnoseButton.gameObject.SetActive(visible);
+            if (visible) diagnoseButton.Enable();
         }
     }
 }

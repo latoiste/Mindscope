@@ -1,7 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class CluePaper : MonoBehaviour
@@ -12,39 +10,68 @@ public class CluePaper : MonoBehaviour
     private Vector2 mouseOffset;
     private SpriteRenderer sprite;
     private ClueBoard clueBoard;
+    private BoxCollider2D boxCollider;
+    private bool isInitialized = false;
 
     void Awake()
     {
-        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        
-        bounds = boxCollider.bounds;
+        EnsureInitialized();
+    }
+
+    private void EnsureInitialized()
+    {
+        if (isInitialized) return;
+
+        boxCollider = GetComponent<BoxCollider2D>();
+        if (boxCollider != null) bounds = boxCollider.bounds;
+
         sprite = GetComponentInChildren<SpriteRenderer>();
         textMeshPro = GetComponentInChildren<TextMeshPro>();
         clueBoard = GetComponentInParent<ClueBoard>();
+
+        isInitialized = true;
     }
 
     public void Init(string text, RectTransform clipboardBoundary, int sortingOrder)
     {
-        textMeshPro.text = text;
+        EnsureInitialized();
+
         this.clipboardBoundary = clipboardBoundary;
+
+        if (textMeshPro != null)
+        {
+            textMeshPro.text = text;
+        }
 
         SetSortingOrder(sortingOrder);
     }
 
     public void SetSortingOrder(int sortingOrder)
     {
-        sprite.sortingOrder = sortingOrder * 10;
-        textMeshPro.sortingOrder = sortingOrder * 10 + 1;
+        EnsureInitialized();
+
+        if (sprite != null) sprite.sortingOrder = sortingOrder * 10;
+        if (textMeshPro != null) textMeshPro.sortingOrder = sortingOrder * 10 + 1;
     }
 
     void OnMouseDown()
     {
-        mouseOffset = new Vector2(transform.position.x, transform.position.y) - MousePosition();
-        clueBoard.BringClueToFront(this);
+        EnsureInitialized();
+
+        mouseOffset = (Vector2)transform.position - MousePosition();
+
+        if (clueBoard != null)
+        {
+            clueBoard.BringClueToFront(this);
+        }
     }
 
     void OnMouseDrag()
     {
+        EnsureInitialized();
+
+        if (clipboardBoundary == null) return;
+
         Vector2 newPos = MousePosition() + mouseOffset;
         Bounds clipboardBounds = GetBounds();
 
@@ -64,9 +91,11 @@ public class CluePaper : MonoBehaviour
 
     private Vector2 MousePosition()
     {
-        Vector3 screenPosition = Input.mousePosition; 
+        Camera cam = Camera.main;
+        if (cam == null) cam = FindFirstObjectByType<Camera>();
+        if (cam == null) return transform.position;
 
-        return Camera.main.ScreenToWorldPoint(new Vector2(screenPosition.x, screenPosition.y));   
+        return cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private Bounds GetBounds()
@@ -74,10 +103,9 @@ public class CluePaper : MonoBehaviour
         Vector3[] corners = new Vector3[4];
         clipboardBoundary.GetWorldCorners(corners);
 
-        Bounds bounds = new Bounds(corners[0], Vector3.zero);
+        Bounds b = new Bounds(corners[0], Vector3.zero);
+        for (int i = 1; i < 4; i++) b.Encapsulate(corners[i]);
 
-        for (int i = 1; i < 4; i++) bounds.Encapsulate(corners[i]);
-
-        return bounds;
+        return b;
     }
 }
