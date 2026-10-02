@@ -14,16 +14,39 @@ public class DiagnosisBoard : Board
     private DiseasePage diseasePage;
     private GameObject currentPage;
     private Dictionary<string, GameObject> pageMap;
-    public UnityEvent<string> onDiagnosed;
+    public UnityEvent<string> onDiagnosed = new();
 
     protected override void Awake()
     {
+        // 1. Prevent toggleButton from accidentally stealing a button from the child pages
+        if (toggleButton == null)
+        {
+            Button[] allButtons = GetComponentsInChildren<Button>(true);
+            foreach (var btn in allButtons)
+            {
+                bool isInsideInitial = initialPageGo != null && btn.transform.IsChildOf(initialPageGo.transform);
+                bool isInsideDisease = diseasePageGo != null && btn.transform.IsChildOf(diseasePageGo.transform);
+
+                if (!isInsideInitial && !isInsideDisease)
+                {
+                    toggleButton = btn;
+                    break;
+                }
+            }
+        }
+
+        // 2. Isolate pages so they never render together
+        if (initialPageGo != null) initialPageGo.SetActive(true);
+        if (diseasePageGo != null) diseasePageGo.SetActive(false);
+
         base.Awake();
 
-        initialPage = initialPageGo.GetComponent<InitialPage>();
-        diseasePage = diseasePageGo.GetComponent<DiseasePage>();
-        
-        toggleButton.Disable();
+        if (initialPageGo != null) initialPage = initialPageGo.GetComponent<InitialPage>();
+        if (diseasePageGo != null) diseasePage = diseasePageGo.GetComponent<DiseasePage>();
+
+        // Disable toggle tab until questions are done
+        if (toggleButton != null) toggleButton.Disable();
+
         currentPage = initialPageGo;
 
         pageMap = new()
@@ -32,39 +55,54 @@ public class DiagnosisBoard : Board
             { "disease", diseasePageGo },
         };
 
-        initialPage.onDiagnosed.AddListener(EndGame);
-        diseasePage.onDiagnosed.AddListener(EndGame);
+        if (initialPage != null)
+        {
+            if (initialPage.onDiagnosed == null) initialPage.onDiagnosed = new();
+            initialPage.onDiagnosed.AddListener(EndGame);
+        }
 
-        initialPageGo.SetActive(true);
-        diseasePageGo.SetActive(false);
+        if (diseasePage != null)
+        {
+            if (diseasePage.onDiagnosed == null) diseasePage.onDiagnosed = new();
+            diseasePage.onDiagnosed.AddListener(EndGame);
+        }
     }
 
-    public async void EnableBoard()
+    public void EnableBoard()
     {
-        await transform
+        transform
             .DOLocalMoveX(1.8f, 1f)
             .SetEase(Ease.OutCubic)
-            .AsyncWaitForCompletion();
-
-        originalCanvasPos = transform.position;
-        toggleButton.Enable();
+            .OnComplete(() =>
+            {
+                originalCanvasPos = transform.position;
+                if (toggleButton != null) toggleButton.Enable();
+            });
     }
 
     public void SwitchPage(string pageId)
     {
+        if (pageMap == null || !pageMap.ContainsKey(pageId)) return;
+
         GameObject page = pageMap[pageId];
-        if (page == currentPage) return;
-        
+        if (page == null) return;
+
         page.SetActive(true);
-        currentPage.SetActive(false);
+        if (currentPage != null && currentPage != page)
+        {
+            currentPage.SetActive(false);
+        }
 
         currentPage = page;
     }
 
     private void EndGame(string outcome)
     {
-        if (outcome.Length == 0) return;
-        gameManager.Diagnose(outcome);
+        if (string.IsNullOrEmpty(outcome)) return;
+        if (gameManager != null)
+        {
+            gameManager.Diagnose(outcome);
+        }
     }
 
     private void SetSortingLayerName(string layerName)
@@ -77,21 +115,22 @@ public class DiagnosisBoard : Board
         foreach (var s in sprites) s.sortingLayerID = layerId;
         foreach (var t in textMeshPros) t.sortingLayerID = layerId;
     }
-    
+
     protected override async void OnBoardMoved(Board board, bool opening)
     {
         if (opening)
         {
             SetSortingLayerName("openingBoard");
-            await movingOp;
+            if (movingOp != null) await movingOp;
             SetSortingLayerName("board");
-            sprite.sortingOrder = 0;
-        } else
+            if (sprite != null) sprite.sortingOrder = 0;
+        }
+        else
         {
             SetSortingLayerName("closingBoard");
-            await movingOp;
+            if (movingOp != null) await movingOp;
             SetSortingLayerName("board");
-            sprite.sortingOrder = 5;
+            if (sprite != null) sprite.sortingOrder = 5;
         }
     }
 }

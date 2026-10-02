@@ -7,7 +7,8 @@ public class Button : MonoBehaviour
 {
     public UnityEvent onClick;
 
-    private BoxCollider2D boxCollider;
+    // Changed from 'private' to 'protected' so Checkbox can access it
+    protected BoxCollider2D boxCollider;
 
     protected virtual void Awake()
     {
@@ -16,23 +17,24 @@ public class Button : MonoBehaviour
 
     public void Enable()
     {
-        boxCollider.enabled = true;
+        if (boxCollider != null) boxCollider.enabled = true;
     }
 
     public void Disable()
     {
-        boxCollider.enabled = false;
+        if (boxCollider != null) boxCollider.enabled = false;
     }
 
-    void OnMouseDown()
+    // Changed to 'protected virtual' so Checkbox can override it
+    protected virtual void OnMouseDown()
     {
-       if (boxCollider != null && boxCollider.enabled)
-    {
-        onClick?.Invoke();
-    }
+        if (boxCollider != null && boxCollider.enabled)
+        {
+            onClick?.Invoke();
+        }
     }
 
-    void OnDestroy()
+    protected virtual void OnDestroy()
     {
         onClick.RemoveAllListeners();
     }

@@ -8,27 +8,27 @@ public class Checkbox : Button
     [SerializeField] private Sprite uncheckedSprite;
     [SerializeField] public string value;
 
-    private bool isChecked;
-    public bool IsChecked => isChecked; // <--- ADD THIS GETTER
+    private bool isChecked = false;
+    public bool IsChecked => isChecked;
 
     public UnityEvent onChecked;
 
     protected override void Awake()
     {
         base.Awake();
-
-        isChecked = false;
-        onClick.AddListener(ToggleCheck);
+        SetChecked(false);
     }
 
-    private void ToggleCheck()
+    protected override void OnMouseDown()
     {
-        isChecked = !isChecked;
-        if (sprite != null)
-        {
-            sprite.sprite = isChecked ? checkedSprite : uncheckedSprite;
-        }
+        if (boxCollider == null || !boxCollider.enabled) return;
+
+        // 1. ALWAYS toggle state FIRST before any listener reads it
+        SetChecked(!isChecked);
         onChecked?.Invoke();
+
+        // 2. Base method invokes onClick safely
+        base.OnMouseDown();
     }
 
     public void SetChecked(bool checkedValue)
@@ -40,9 +40,9 @@ public class Checkbox : Button
         }
     }
 
-    void OnDestroy()
+    protected override void OnDestroy()
     {
-        onClick.RemoveAllListeners();
+        base.OnDestroy();
         onChecked.RemoveAllListeners();
     }
 }
