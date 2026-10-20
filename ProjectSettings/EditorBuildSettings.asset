@@ -27,4 +27,5 @@ EditorBuildSettings:
     path: Assets/Scenes/LoseScreen.unity
     guid: 0e83d70b9dc848f4387905bdfcdbba01
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 96990f0aedb66d75daaddd0a2ff142b7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

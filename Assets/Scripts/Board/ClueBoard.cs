@@ -23,8 +23,10 @@ public class ClueBoard : Board
         newClueNotif.enabled = false;
 
         var clueProfile = GetComponentInChildren<CluePaper>();
+        var patient = GameManager.instance.GetSelectedPatient;
+
         clueProfile.Init(
-            "Name: Hal\nAge: 21\nOccupation: Retail worker\nReason for visiting: Feeling tired constantly",
+            $"Name: {patient.name}\nAge: {patient.age}\nOccupation: {patient.occupation}\nReason for visiting: {patient.reasonForVisiting}",
             clipboardBoundary,
             0
         );

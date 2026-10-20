@@ -1,0 +1,13 @@
+{
+    "patients": [
+        {
+            "id": "001",
+            "name": "Hal",
+            "age": "21",
+            "occupation": "hai",
+            "reasonForVisiting": "Feeling tired constantly",
+            "possibleDiseases": ["mdd", "ptsd", "anxiety"],
+            "controllerPath": "PlayerController/Hal"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "questions": [
+        {
+            "type": "mdd",
+            "question": "emdd",
+            "answer": "fuck no",
+            "clue": ""
+        },
+        {
+            "type": "mdd",
+            "question": "emdd too",
+            "answer": "lol",
+            "clue": ""
+        },
+        {
+            "type": "ptsd",
+            "question": "this is ptsd",
+            "answer": "huh",
+            "clue": ""
+        },
+        {
+            "type": "ptsd",
+            "question": "also ptsd",
+            "answer": "no",
+            "clue": ""
+        },
+        {
+            "type": "anxiety",
+            "question": "anxeeity",
+            "answer": "boo",
+            "clue": "fuck"
+        },
+        {
+            "type": "anxiety",
+            "question": "also enxierty",
+            "answer": "huh",
+            "clue": ""
+        },
+        {
+            "type": "general",
+            "question": "ARE YOU AFRAID SOLDIER",
+            "answer": "fuck no",
+            "clue": "green lantern"
+        },
+        {
+            "type": "general",
+            "question": "dd",
+            "answer": "yay",
+            "clue": ""
+        },
+        {
+            "type": "general",
+            "question": "no??",
+            "answer": "ok",
+            "clue": ""
+        },
+        {
+            "type": "general",
+            "question": "hi",
+            "answer": "hello",
+            "clue": "haii"
+        }
+    ]
+}

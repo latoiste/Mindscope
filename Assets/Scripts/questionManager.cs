@@ -4,14 +4,6 @@ using TMPro;
 
 public class questionManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class Question
-    {
-        public string question;
-        [TextArea(2, 5)] public string answer;
-        [TextArea(2, 5)] public string clue;
-    }
-
     [Header("Clue Board Reference")]
     public ClueBoard clueBoard;
 
@@ -36,9 +28,7 @@ public class questionManager : MonoBehaviour
     [Header("Typewriter Settings")]
     [SerializeField] private float typingSpeed = 0.035f;
 
-    [Header("Questions")]
-    public Question[] questions;
-
+    private Question[] questions;
     private int currentSet = 0;
     private int selectedCount = 0;
     private int totalSelectedCount = 0;
@@ -60,6 +50,8 @@ public class questionManager : MonoBehaviour
 
     private void Start()
     {
+        questions = GameManager.instance.GetQuestions;
+
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 

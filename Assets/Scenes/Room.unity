@@ -291,31 +291,6 @@ MonoBehaviour:
   characterAnimator: {fileID: 1079508000}
   talkingBoolName: isTalking
   typingSpeed: 0.035
-  questions:
-  - question: How have you been feeling about yourself lately?
-    answer: Feeling like a burden lately
-    clue: This patient is showing sign of worthlessness
-  - question: How have your mood and energy been compared with your usual self?
-    answer: Whenever I wake up, I still feel like a zombie
-    clue: This patient is showing sign of fatigue
-  - question: How have your relationships with other people been lately?
-    answer: Nothing's Interesting
-    clue: 
-  - question: How do you usually respond when you feel worried, stressed, or unsafe?
-    answer: "It doesn\u2019t matter to me"
-    clue: 
-  - question: Have you ever had thoughts of ending your life?
-    answer: Every second of my life.
-    clue: This patient has thoughts of suicide
-  - question: Have you recently felt like there is little or no hope for the future?
-    answer: I have no more future...
-    clue: This patient is showing sign of hopelessness
-  - question: Have you feel gazing eyes on you when you are with a crowd?
-    answer: I don't know...
-    clue: 
-  - question: Have you done something in the past that might explain your condition?
-    answer: Maybe?
-    clue: 
 --- !u!114 &264682369 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2861456911633532836, guid: fd96d0d1feaad4e2093370aadedb18a8, type: 3}
@@ -886,7 +861,7 @@ Animator:
   m_GameObject: {fileID: 527308192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f57962bc4b18d254588ee0941215283b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 57ba62f56c8b789358a86d15d9aeba42, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1466,6 +1441,7 @@ GameObject:
   - component: {fileID: 1079507999}
   - component: {fileID: 1079507998}
   - component: {fileID: 1079508000}
+  - component: {fileID: 1079508001}
   m_Layer: 6
   m_Name: spooderman
   m_TagString: Untagged
@@ -1557,7 +1533,7 @@ Animator:
   m_GameObject: {fileID: 1079507996}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0e2cad0351976334d8ae5e436c7e2f18, type: 2}
+  m_Controller: {fileID: 9100000, guid: f374a97eda455d042afe8c91a5fd0f04, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1569,6 +1545,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1079508001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079507996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f1e544225907713b757592ae2ae285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &1156751092 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4437493527447119763, guid: fd96d0d1feaad4e2093370aadedb18a8, type: 3}
