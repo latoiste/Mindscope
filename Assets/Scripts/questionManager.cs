@@ -28,6 +28,11 @@ public class questionManager : MonoBehaviour
     [Header("Typewriter Settings")]
     [SerializeField] private float typingSpeed = 0.035f;
 
+    [Header("Dialogue Segments")]
+    [SerializeField] private string segmentSeparator = "|";
+
+    private string[] answerSegments;
+    private int currentSegment = 0;
     private Question[] questions;
     private int currentSet = 0;
     private int selectedCount = 0;
@@ -132,50 +137,77 @@ public class questionManager : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeAnswerRoutine(questions[questionIndex].answer));
-    }
+        string fullAnswer = questions[questionIndex].answer;
 
-    private IEnumerator TypeAnswerRoutine(string fullText)
-    {
-        isTyping = true;
-        SetTalkingState(true);
+        if (string.IsNullOrEmpty(fullAnswer))
+            fullAnswer = "...";
 
-        if (answerText != null)
+        answerSegments = fullAnswer.Split(
+            new string[] { segmentSeparator },
+            System.StringSplitOptions.None
+        );
+
+        currentSegment = 0;
+
+        StartCurrentSegment();
+            }
+            private void StartCurrentSegment()
         {
-            if (string.IsNullOrEmpty(fullText))
+            if (answerSegments == null ||
+                currentSegment >= answerSegments.Length)
+                return;
+
+            canCloseDialogue = false;
+
+            if (typingCoroutine != null)
             {
-                fullText = "...";
+                StopCoroutine(typingCoroutine);
+                typingCoroutine = null;
             }
 
-            answerText.text = fullText;
-            answerText.ForceMeshUpdate(); // Forces TMP to calculate character count immediately
-
-            int totalCharacters = answerText.textInfo.characterCount;
-            if (totalCharacters <= 0)
-            {
-                totalCharacters = fullText.Length;
-            }
-
-            answerText.maxVisibleCharacters = 0;
-
-            float speed = typingSpeed <= 0f ? 0.035f : typingSpeed;
-
-            for (int i = 1; i <= totalCharacters; i++)
-            {
-                answerText.maxVisibleCharacters = i;
-                yield return new WaitForSeconds(speed);
-            }
-
-            answerText.maxVisibleCharacters = int.MaxValue;
+            typingCoroutine = StartCoroutine(
+                TypeAnswerRoutine(answerSegments[currentSegment].Trim())
+            );
         }
+            private IEnumerator TypeAnswerRoutine(string fullText)
+            {
+                isTyping = true;
+                SetTalkingState(true);
 
-        // Typing finished naturally
-        isTyping = false;
-        SetTalkingState(false);
-        typingCoroutine = null;
+                if (answerText != null)
+                {
+                    if (string.IsNullOrEmpty(fullText))
+                    {
+                        fullText = "...";
+                    }
 
-        // Allow closing dialogue shortly after typing finishes
-        StartCoroutine(EnableDialogueCloseDelay());
+                    answerText.text = fullText;
+                    answerText.ForceMeshUpdate(); // Forces TMP to calculate character count immediately
+
+                    int totalCharacters = answerText.textInfo.characterCount;
+                    if (totalCharacters <= 0)
+                    {
+                        totalCharacters = fullText.Length;
+                    }
+
+                    answerText.maxVisibleCharacters = 0;
+
+                    float speed = typingSpeed <= 0f ? 0.035f : typingSpeed;
+
+                    for (int i = 1; i <= totalCharacters; i++)
+                    {
+                        answerText.maxVisibleCharacters = i;
+                        yield return new WaitForSeconds(speed);
+                    }
+
+                    answerText.maxVisibleCharacters = int.MaxValue;
+                }
+
+                isTyping = false;
+                SetTalkingState(false);
+                typingCoroutine = null;
+
+                StartCoroutine(EnableDialogueCloseDelay());
     }
 
     private void SetTalkingState(bool isTalking)
@@ -219,8 +251,7 @@ public class questionManager : MonoBehaviour
     }
 
     public void FinishAnswer()
-    {
-        // 1. If still typing: clicking finishes the text and stops the talking animation
+{
         if (isTyping)
         {
             if (typingCoroutine != null)
@@ -230,23 +261,29 @@ public class questionManager : MonoBehaviour
             }
 
             if (answerText != null)
-            {
                 answerText.maxVisibleCharacters = int.MaxValue;
-            }
 
             isTyping = false;
             SetTalkingState(false);
 
-            // Buffer to prevent a single click from instantly closing the panel
             canCloseDialogue = false;
             StartCoroutine(EnableDialogueCloseDelay());
             return;
         }
 
-        // 2. If typing is done: clicking closes the panel
-        if (!canCloseDialogue) return;
+        if (!canCloseDialogue)
+            return;
 
         canCloseDialogue = false;
+
+        if (answerSegments != null &&
+            currentSegment < answerSegments.Length - 1)
+        {
+            currentSegment++;
+            StartCurrentSegment();
+            return;
+        }
+
         SetTalkingState(false);
 
         if (dialoguePanel != null)
@@ -255,9 +292,8 @@ public class questionManager : MonoBehaviour
         if (totalSelectedCount >= 6)
         {
             if (diagnosisBoard != null)
-            {
                 diagnosisBoard.EnableBoard();
-            }
+
             return;
         }
 
@@ -269,7 +305,7 @@ public class questionManager : MonoBehaviour
         {
             ShowQuestions();
         }
-    }
+}
 
     void HideAllQuestions()
     {
